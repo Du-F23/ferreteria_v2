@@ -15,39 +15,25 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+        $categories = Category::latest()->paginate(20);
+        return view('categories.index', [
+            'categories' => $categories,
+        ]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreCategoryRequest  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(StoreCategoryRequest $request)
     {
-        //
+        Category::create([
+            'name'=>$request->name
+        ]);
+        return redirect('/category')->with('mesage', 'la categoria se ha agregado exitosamente!');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function show(Category $category)
     {
-        //
+        return response()->json($categories);
     }
 
     /**
@@ -58,7 +44,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $category = Category::findOrFail($id);
+            //return $category;
+            return view('categorias.edit',['category'=>$category]);
     }
 
     /**
@@ -70,7 +58,10 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->update($request->all());
+        return redirect('/category')->with('mesageUpdate', 'la categoria se ha modificado exitosamente!');
+
     }
 
     /**
@@ -81,6 +72,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect('/category')->with('mesageDelete', 'la categoria se ha eliminado exitosamente!');
     }
 }
