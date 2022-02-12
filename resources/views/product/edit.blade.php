@@ -1,5 +1,5 @@
 @extends('layout.app')
-@extends('layout.head')
+
 @section('content')
     <div class="container-fluid py-4">
         <div class="row">
@@ -14,10 +14,12 @@
                         <div class="table-responsive p-0">
                             <div class="container">
                                 <form action="{{route('product.update', ['id'=>$product->id])}}" method="POST">
-                                    {{-- generar el token para el envio de dato csrf --}}
+                                     generar el token para el envio de dato csrf
                                     @csrf
                                     @method('PUT')
+                                    <div>
                                     <label class="col" for="">Nombre Producto:</label>
+                                    </div>
                                     <br>
                                     <div class="card">
                                         <div class="card-header card-header-primary">
@@ -49,14 +51,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-{{--                                            <div class="row">--}}
-{{--                                                <label for="category_id" class="col-sm-2 col-form-label">Categoría</label>--}}
-{{--                                                <div class="col-sm-7">--}}
-{{--                                                    <select class="form-group bmd-form-group" name="category_id" id="category_id">--}}
-{{--                                                        <option selected value="">Selecciona</option>--}}
-
-{{--                                                    </select>--}}
-
+                                            <div class="row">
+                                                <label for="category_id" class="col-sm-2 col-form-label">Categoría</label>
                                             <div class="col-sm-7">
                                                 <select class="form-group bmd-form-group" name="category_id" id="category_id">
                                                     <option selected value="">Selecciona</option>
@@ -65,13 +61,18 @@
                                                     @endforeach
                                                 </select>
                                             </div>
+                                        </div>
+
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                         <button type="submit" class="btn btn-primary">Guardar</button>
                                     </div>
-                                                </div>
-                                            </div>
-                                </form>
+                                </div>
                             </div>
-                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
