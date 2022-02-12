@@ -6,13 +6,17 @@ use App\Http\Requests\StoreProductsRequest;
 use App\Http\Requests\UpdateProductsRequest;
 use App\Models\Products;
 use App\Models\Category;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 
 class ProductsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -25,7 +29,7 @@ class ProductsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -37,8 +41,8 @@ class ProductsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreProductsRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param StoreProductsRequest $request
+     * @return Response
      */
     public function store(StoreProductsRequest $request)
     {
@@ -54,8 +58,8 @@ class ProductsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Products  $products
-     * @return \Illuminate\Http\Response
+     * @param Products $products
+     * @return Response
      */
     public function show(Products $products)
     {
@@ -65,25 +69,27 @@ class ProductsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Products  $products
-     * @return \Illuminate\Http\Response
+     * @param Products $products
+     * @return Response
      */
     public function edit($id)
     {
+        $categorias = Category::select('id', 'name')->orderBy('name')->get();
         $product=Products::findOrFail($id);
-        return view('productos.edit',[
+        return view('product.edit',[
             'product'=>$product,
+            'categorias'=>$categorias,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateProductsRequest  $request
-     * @param  \App\Models\Products  $products
-     * @return \Illuminate\Http\Response
+     * @param UpdateProductsRequest $request
+     * @param Products $products
+     * @return Response
      */
-    public function update(UpdateProductsRequest $request, Products $products)
+    public function update(UpdateProductsRequest $request, Products $id)
     {
         $product=Products::findOrFail($id);
         $product->update($request->all());
@@ -93,10 +99,10 @@ class ProductsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Products  $products
-     * @return \Illuminate\Http\Response
+     * @param Products $products
+     * @return Application|RedirectResponse|Redirector
      */
-    public function destroy(Products $products)
+    public function destroy(Products $products): Redirector|RedirectResponse|Application
     {
         $products->delete();
         return redirect('/products')->with('mesageDelete', 'El producto se ha eliminado exitosamente!');

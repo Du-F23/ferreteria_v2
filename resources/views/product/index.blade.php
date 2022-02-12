@@ -68,7 +68,7 @@
                     <td>{{$product->cantidad}}</td>
                     <td>
                         <button type='button' class="btn btn-primary"><i class="far fa-eye"></i></button>
-                        <a type='button' href="/productos/{{$product->id}}/edit"><button type='button' class="btn btn-success"><i class="fas fa-pen-square"></i></button></a>
+                        <a type='button' href="/product/{{$product->id}}/edit"><button type='button' class="btn btn-success"><i class="fas fa-pen-square"></i></button></a>
 
 
                         <form action="{{ route('product.destroy', $product) }}" method="POST">

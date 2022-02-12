@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('layout.app')
+@extends('layout.head')
 @section('content')
     <div class="container-fluid py-4">
         <div class="row">
@@ -12,7 +13,7 @@
                     <div class="card-body px-0 pb-2">
                         <div class="table-responsive p-0">
                             <div class="container">
-                                <form action="{{route('producto.update', ['id'=>$product->id])}}" method="POST">
+                                <form action="{{route('product.update', ['id'=>$product->id])}}" method="POST">
                                     {{-- generar el token para el envio de dato csrf --}}
                                     @csrf
                                     @method('PUT')
@@ -48,27 +49,29 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- <div class="row">
-                                                <label for="category_id" class="col-sm-2 col-form-label">Categoría</label>
-                                                <div class="col-sm-7">
-                                                    <select class="form-group bmd-form-group" name="category_id" id="category_id">
-                                                        <option selected value="">Selecciona</option>
+{{--                                            <div class="row">--}}
+{{--                                                <label for="category_id" class="col-sm-2 col-form-label">Categoría</label>--}}
+{{--                                                <div class="col-sm-7">--}}
+{{--                                                    <select class="form-group bmd-form-group" name="category_id" id="category_id">--}}
+{{--                                                        <option selected value="">Selecciona</option>--}}
 
-                                                    </select> -->
+{{--                                                    </select>--}}
+
+                                            <div class="col-sm-7">
+                                                <select class="form-group bmd-form-group" name="category_id" id="category_id">
+                                                    <option selected value="">Selecciona</option>
+                                                    @foreach($categorias as $categoria)
+                                                        <option value="{!! $categoria->id !!}">{{ $categoria->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                         <button type="submit" class="btn btn-primary">Guardar</button>
                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
                                 </form>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
