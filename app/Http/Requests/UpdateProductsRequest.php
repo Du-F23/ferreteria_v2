@@ -27,9 +27,8 @@ class UpdateProductsRequest extends FormRequest
     {
         return [
             'name'=> ['required', 'min:3', 'max:255'],
-            'cantidad'=> ['required', 'min:3', 'max:255'],
-            'precio'=> ['required', 'min:3', 'max:255'],
-            'category_id'=> ['required', 'min:3', 'max:255'],
+            'cantidad'=> ['required', 'max:255'],
+            'precio'=> ['required', 'max:255'],
         ];
     }
 }

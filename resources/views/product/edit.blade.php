@@ -51,17 +51,17 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <label for="category_id" class="col-sm-2 col-form-label">Categoría</label>
-                                            <div class="col-sm-7">
-                                                <select class="form-group bmd-form-group" name="category_id" id="category_id">
-                                                    <option selected value="">Selecciona</option>
-                                                    @foreach($categorias as $categoria)
-                                                        <option value="{!! $categoria->id !!}">{{ $categoria->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
+{{--                                            <div class="row">--}}
+{{--                                                <label for="category_id" class="col-sm-2 col-form-label">Categoría</label>--}}
+{{--                                            <div class="col-sm-7">--}}
+{{--                                                <select class="form-group bmd-form-group" name="category_id" id="category_id">--}}
+{{--                                                    <option selected value="">Selecciona</option>--}}
+{{--                                                    @foreach($categorias as $categoria)--}}
+{{--                                                        <option value="{!! $categoria->id !!}">{{ $categoria->name }}</option>--}}
+{{--                                                    @endforeach--}}
+{{--                                                </select>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -75,4 +75,7 @@
             </div>
         </div>
     </div>
+        </div>
+    </div>
+
 @endsection

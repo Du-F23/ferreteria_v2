@@ -42,7 +42,7 @@ class ProductsController extends Controller
      * Store a newly created resource in storage.
      *
      * @param StoreProductsRequest $request
-     * @return Response
+     * @return Application|Redirector|RedirectResponse
      */
     public function store(StoreProductsRequest $request)
     {
@@ -55,45 +55,22 @@ class ProductsController extends Controller
         return redirect('/product')->with('mesage', 'El producto se ha agregado exitosamente!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param Products $products
-     * @return Response
-     */
-    public function show(Products $products)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Products $products
-     * @return Response
-     */
     public function edit($id)
     {
         $categorias = Category::select('id', 'name')->orderBy('name')->get();
-        $product=Products::findOrFail($id);
-        return view('product.edit',[
+        $product=Products::find($id);
+        return view('product.edit', data: [
             'product'=>$product,
             'categorias'=>$categorias,
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param UpdateProductsRequest $request
-     * @param Products $products
-     * @return Response
-     */
-    public function update(UpdateProductsRequest $request, Products $id)
+
+    public function update(UpdateProductsRequest $request, Products $products,$id)
     {
         $product=Products::findOrFail($id);
         $product->update($request->all());
-        return redirect('/productos')->with('mesage', 'el producto se ha actualizado exitosamente!');
+        return redirect('/product')->with('mesage', 'el producto se ha actualizado exitosamente!');
     }
 
     /**
