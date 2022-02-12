@@ -77,11 +77,11 @@ class ProductsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Products $products
-     * @return Application|RedirectResponse|Redirector
+     * @return \Illuminate\Http\Response
      */
-    public function destroy(Products $products): Redirector|RedirectResponse|Application
+    public function destroy(Products $product)
     {
-        $products->delete();
-        return redirect('/products')->with('mesageDelete', 'El producto se ha eliminado exitosamente!');
+        $product->delete();
+        return redirect('/product')->with('mesageDelete', 'El producto se ha eliminado exitosamente!');
     }
 }
