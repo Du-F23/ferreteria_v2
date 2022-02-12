@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreProductsRequest extends FormRequest
@@ -13,7 +15,7 @@ class StoreProductsRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +26,10 @@ class StoreProductsRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+        'name'=> ['required', 'min:3', 'max:255'],
+        'cantidad'=> ['required','integer', 'min:1'],
+        'precio'=> ['required', 'numeric', 'min:1'],
+        'category_id'=> ['required'],
         ];
     }
 }

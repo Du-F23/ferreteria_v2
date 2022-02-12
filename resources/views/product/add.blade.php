@@ -1,10 +1,10 @@
-@extends('layouts.app')
-@extends('layouts.header')
+@extends('layout.app')
+@extends('layout.head')
 @section('content')
-<div class="container">
-    <div class="row">
+<div class="container justify-content-center">
+    <div class="row  justify-content-center">
         <div class="col-8">
-            <form method="POST" action="{{route('producto.store', ['id'=>$producto->id])}}" class="form-horizontal">
+            <form method="POST" action="{{route('product.store')}}" class="form-horizontal">
                 @csrf
                 <div class="card">
                     <div class="card-header card-header-primary">
@@ -53,7 +53,7 @@
                 <button type="submit" id="btn-guardar" class="btn btn-primary">guardar</button>
             </form>
         </div>
-
+        </div>
     </div>
 </div>
 @endsection

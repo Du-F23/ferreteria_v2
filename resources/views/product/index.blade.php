@@ -1,8 +1,10 @@
-@extends('layouts.app')
-@extends('layouts.header')
+@extends('layout.app')
+@extends('layout.head')
 @section('content')
 
-<div class="panel-body">
+<div class="container d-flex align-items-center justify-content-center">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
     @if (session('mesage'))
     <div class="alert alert-info alert-dismissible text-white" role="alert">
       <span class="text-sm"> <a href="javascript:;" class="alert-link text-white">Excelente</a>. {{ session('mesage')
@@ -38,7 +40,7 @@
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                 <h6 class="text-white text-capitalize ps-3">Lista De Productos</h6>
                 <div class="float-end">
-                <a href="/productos/add">
+                <a href="/product/add">
                     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-toggle="tooltip" data-bs-placement="top" title="Agregar">
                       <i class="fas fa-plus-circle"></i>
                     </button>
@@ -69,7 +71,7 @@
                         <a type='button' href="/productos/{{$product->id}}/edit"><button type='button' class="btn btn-success"><i class="fas fa-pen-square"></i></button></a>
 
 
-                        <form action="{{ route('products.destroy', $product) }}" method="POST">
+                        <form action="{{ route('product.destroy', $product) }}" method="POST">
                             @method('DELETE')
                             @csrf
                             <button type='submit' class="btn btn-sm btn-danger"
