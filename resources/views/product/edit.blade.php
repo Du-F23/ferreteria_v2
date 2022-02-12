@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container-fluid py-4">
-        <div class="row">
-            <div class="col-12">
+        <div class="row justify-content-center">
+            <div class="col-8">
                 <div class="card my-4">
                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                         <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
@@ -14,7 +14,7 @@
                         <div class="table-responsive p-0">
                             <div class="container">
                                 <form action="{{route('product.update', ['id'=>$product->id])}}" method="POST">
-                                     generar el token para el envio de dato csrf
+{{--                                     generar el token para el envio de dato csrf--}}
                                     @csrf
                                     @method('PUT')
                                     <div>

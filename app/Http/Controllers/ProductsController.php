@@ -6,10 +6,6 @@ use App\Http\Requests\StoreProductsRequest;
 use App\Http\Requests\UpdateProductsRequest;
 use App\Models\Products;
 use App\Models\Category;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
-use Illuminate\Routing\Redirector;
 
 class ProductsController extends Controller
 {
