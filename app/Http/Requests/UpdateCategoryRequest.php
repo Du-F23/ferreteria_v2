@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Category;
+use Illuminate\Http\Request;
 
 class UpdateCategoryRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class UpdateCategoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +26,7 @@ class UpdateCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'requerid|min:3|max:50'
+            'name'=>['required','min:3', 'max:50'],
         ];
     }
 }
