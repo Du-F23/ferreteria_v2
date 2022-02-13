@@ -1,8 +1,9 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProductsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,11 @@ Route::post('/product', [ProductsController::class, 'store'])->name('product.sto
 Route::put('/product/{id}/update', [ProductsController::class, 'update'])->name('product.update');
 Route::get('/product/{id}/edit', [ProductsController::class, 'edit'])->name('product.edit');
 Route::delete('/product/{product}', [ProductsController::class, 'destroy'])->name('product.destroy');
+
+//Clientes Rutas
+Route::get('/client', [ClientsController::class, 'index'])->name('client.index');
+Route::get('/client/add', [ClientsController::class, 'create'])->name('client.create');
+Route::post('/client/', [ClientsController::class, 'store'])->name('client.store');
+Route::put('/client/{id}/update', [ClientsController::class, 'update'])->name('client.update');
+Route::get('/client/{id}/edit', [ClientsController::class, 'edit'])->name('client.edit');
+Route::delete('/client/{clients}', [ClientsController::class, 'destroy'])->name('client.destroy');

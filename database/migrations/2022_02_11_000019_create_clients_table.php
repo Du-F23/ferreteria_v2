@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('home_address');
-            $table->integer('phone_number');
+            $table->bigInteger('phone_number');
             $table->timestamps();
         });
     }

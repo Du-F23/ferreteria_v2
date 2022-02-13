@@ -15,50 +15,46 @@ class ClientsController extends Controller
      */
     public function index()
     {
-        //
+        $client=Clients::latest()->paginate(20);
+        return view('clients.index',['client'=>$client]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
-        //
+        $cliente=new Clients;
+        return view('clients.add', compact('cliente'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreClientsRequest  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function store(StoreClientsRequest $request)
     {
-        //
+
+        Clients::create([
+            'name'=>$request->name,
+            'home_address'=>$request->home_address,
+            'phone_number'=>$request->phone_number,
+        ]);
+        return redirect('/client')->with('message', 'El Cliente se ha agregado exitosamente!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Clients  $clients
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Clients $clients)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Clients  $clients
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Clients $clients)
+
+    public function edit($id)
     {
-        //
+        $clients= Clients::findOrFail($id);
+        return view('clients.edit', [
+            'clients'=>$clients
+        ]);
     }
 
     /**
@@ -66,11 +62,13 @@ class ClientsController extends Controller
      *
      * @param  \App\Http\Requests\UpdateClientsRequest  $request
      * @param  \App\Models\Clients  $clients
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function update(UpdateClientsRequest $request, Clients $clients)
+    public function update(UpdateClientsRequest $request, Clients $clients, $id)
     {
-        //
+        $clients=Clients::findOrFail($id);
+        $clients->update($request->all());
+        return redirect('/client')->with('messageUpdate', 'El cliente se a actualizado');
     }
 
     /**
@@ -81,6 +79,7 @@ class ClientsController extends Controller
      */
     public function destroy(Clients $clients)
     {
-        //
+        $clients->delete();
+        return redirect('/client')->with('messageDelete', 'El cliente se a eliminado de maneta correcta');
     }
 }
