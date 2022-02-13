@@ -14,7 +14,9 @@
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Dashboard</span>
+            <span class="nav-link-text ms-1">
+                <img src="https://img.icons8.com/carbon-copy/32/000000/apple-home.png"/>
+                Dashboard</span>
           </a>
         </li>
         <li class="nav-item">
@@ -22,7 +24,10 @@
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Categorias</span>
+            <span class="nav-link-text ms-1">
+                <img src="https://img.icons8.com/external-gradak-royyan-wijaya/24/000000/external-categories-gradak-business-flad-gradak-royyan-wijaya.png"/>
+
+                Categorias</span>
           </a>
         </li>
         <li class="nav-item">
@@ -30,23 +35,28 @@
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Productos</span>
+            <span class="nav-link-text ms-1">
+                <img src="https://img.icons8.com/plumpy/24/000000/box--v2.png"/>
+                Productos</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="../pages/virtual-reality.html">
+          <a class="nav-link " href="/client">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-app text-info text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Virtual Reality</span>
+            <span class="nav-link-text ms-1">
+                <img src="https://img.icons8.com/ios-glyphs/30/000000/client-management--v2.png"/>Clientes</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="../pages/rtl.html">
+          <a class="nav-link " href="/sales">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">RTL</span>
+            <span class="nav-link-text ms-1">
+                <img src="https://img.icons8.com/windows/32/000000/sales-performance.png"/>
+                Ventas</span>
           </a>
         </li>
         <li class="nav-item mt-3">

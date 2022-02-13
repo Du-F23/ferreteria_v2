@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Http\Requests\StoreSalesRequest;
 use App\Http\Requests\UpdateSalesRequest;
 use App\Models\Sales;
+use App\Models\Clients;
+use App\Models\Category;
+use App\Models\Products;
+use App\Models\User;
+
 
 class SalesController extends Controller
 {
@@ -15,7 +21,10 @@ class SalesController extends Controller
      */
     public function index()
     {
-        //
+        $sales=Sales::latest()->paginate(20);
+        return view('sales.index',[
+            'sales'=>$sales,
+        ]);
     }
 
     /**
@@ -25,7 +34,12 @@ class SalesController extends Controller
      */
     public function create()
     {
-        //
+        $venta=new Sales;
+        $categorias = Category::select('id', 'name')->orderBy('name')->get();
+        $clientes = Clients::select('id', 'name')->orderBy('name')->get();
+        $products = Products::select('id', 'name')->orderBy('name')->get();
+        $usuarios = User::select('id', 'name')->orderBy('name')->get();
+        return view('sales.add', compact('categorias', 'clientes', 'venta', 'products','usuarios'));
     }
 
     /**
@@ -36,7 +50,15 @@ class SalesController extends Controller
      */
     public function store(StoreSalesRequest $request)
     {
-        //
+        Sales::create([
+            'client_id'=>$request->client_id
+            ,'product_id'=>$request->product_id
+            ,'user_id'=>$request->user_id
+            ,'quantity'=>$request->quantity,
+            'category_id'=>$request->category_id
+
+        ]);
+        return redirect('/sales')->with('mesage', 'La venta se ha agregado exitosamente!');
     }
 
     /**
@@ -58,7 +80,11 @@ class SalesController extends Controller
      */
     public function edit(Sales $sales)
     {
-        //
+        $venta=Sales::findOrFail($id);
+        $categorias = Category::select('id', 'name')->orderBy('name')->get();
+        $clientes = Clients::select('id', 'name')->orderBy('name')->get();
+        $usuarios = User::select('id', 'name')->orderBy('name')->get();
+        return view('sales.edit', compact('categorias', 'clientes', 'usuarios', 'venta'));
     }
 
     /**
@@ -70,7 +96,9 @@ class SalesController extends Controller
      */
     public function update(UpdateSalesRequest $request, Sales $sales)
     {
-        //
+        $venta=Sales::findOrFail($id);
+        $venta->update($request->all());
+        return redirect('/sales')->with('mesage', 'la venta se ha actualizado exitosamente!');
     }
 
     /**
@@ -81,6 +109,7 @@ class SalesController extends Controller
      */
     public function destroy(Sales $sales)
     {
-        //
+        $sales->delete();
+        return redirect('/sales')->with('mesage', 'la venta se ha eliminado exitosamente!');
     }
 }

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Route;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
 
 //Categorias Rutas
 Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
@@ -42,3 +48,12 @@ Route::post('/client/', [ClientsController::class, 'store'])->name('client.store
 Route::put('/client/{id}/update', [ClientsController::class, 'update'])->name('client.update');
 Route::get('/client/{id}/edit', [ClientsController::class, 'edit'])->name('client.edit');
 Route::delete('/client/{clients}', [ClientsController::class, 'destroy'])->name('client.destroy');
+
+//Sales Rutas
+Route::get('/sales', [SalesController::class, 'index'])->name('sales.index');
+Route::get('/sales/add', [SalesController::class, 'create'])->name('sales.create');
+Route::post('/sales', [SalesController::class, 'store'])->name('sales.store');
+Route::put('/sales/{id}/update', [SalesController::class, 'update'])->name('sales.update');
+Route::get('/sales/{id}/edit', [SalesController::class, 'edit'])->name('sales.edit');
+Route::delete('/sales/{venta}', [SalesController::class, 'edit'])->name('sales.edit');
+
