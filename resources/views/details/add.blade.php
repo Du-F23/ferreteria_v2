@@ -8,19 +8,10 @@
                 @csrf
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        <h4 class="card-title">Crear Deralle de Venta</h4>
+                        <h4 class="card-title">Crear Detalle de Venta</h4>
                         <!-- <p class="card-category">User information</p> -->
                     </div>
                     <div class="card-body ">
-                        <div class="row">
-                            <label for="title" class="col-sm-2 col-form-label">Nombre</label>
-                            <div class="col-sm-7">
-                                <div class="form-group bmd-form-group is-filled">
-                                    <input class="form-control" name="name" id="title" type="text" placeholder="Nombre"
-                                        required aria-required="true">
-                                </div>
-                            </div>
-                        </div>
                         <div class="row">
                             <label for="subtitle" class="col-sm-2 col-form-label">Cantidad</label>
                             <div class="col-sm-7">
@@ -31,30 +22,32 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label for="subtitle" class="col-sm-2 col-form-label">Stock</label>
+                            <label for="subtitle" class="col-sm-2 col-form-label">Subtotal</label>
                             <div class="col-sm-7">
                                 <div class="form-group bmd-form-group is-filled">
-                                    <input class="form-control" name="stock" id="stock" type="number"
-                                        placeholder="Stock" required aria-required="true">
+                                    <input class="form-control" name="subtotal" id="subtotal" type="number"
+                                        placeholder="Subtotal" required aria-required="true">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <label for="subtitle" class="col-sm-2 col-form-label">Precio</label>
+                            <label for="product_id" class="col-sm-2 col-form-label">Producto</label>
                             <div class="col-sm-7">
-                                <div class="form-group bmd-form-group is-filled">
-                                    <input class="form-control" name="precio" id="precio" type="number"
-                                        placeholder="Precio" required aria-required="true">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <label for="category_id" class="col-sm-2 col-form-label">Categoría</label>
-                            <div class="col-sm-7">
-                                <select class="form-group bmd-form-group" name="category_id" id="category_id">
+                                <select class="form-group bmd-form-group" name="product_id" id="product_id">
                                     <option selected value="">Selecciona</option>
-                                    @foreach($categorias as $categoria)
-                                        <option value="{!! $categoria->id !!}">{{ $categoria->name }}</option>
+                                    @foreach($productos as $producto)
+                                        <option value="{!! $producto->id !!}">{{ $producto->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="sale_id" class="col-sm-2 col-form-label">Venta</label>
+                            <div class="col-sm-7">
+                                <select class="form-group bmd-form-group" name="sale_id" id="sale_id">
+                                    <option selected value="">Selecciona</option>
+                                    @foreach($sales as $sale)
+                                        <option value="{!! $sale->id !!}">{{ $sale->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

@@ -14,7 +14,7 @@
                     <div class="table-responsive p-0">
                         <div class="container">
                             <form
-                                action="{{ route('product.update', ['id'=>$product->id]) }}"
+                                action="{{ route('details.update', ['id'=>$detailSales->id]) }}"
                                 method="POST">
                                 {{-- generar el token para el envio de dato csrf --}}
                                 @csrf
@@ -30,54 +30,45 @@
                                     </div>
                                     <div class="card-body ">
                                         <div class="row">
-                                            <label for="title" class="col-sm-2 col-form-label">Nombre</label>
-                                            <div class="col-sm-7">
-                                                <div class="form-group bmd-form-group is-filled">
-                                                    <input class="form-control" name="name" id="title"
-                                                        value="{{ $product->name }}" type="text" placeholder="Nombre"
-                                                        required aria-required="true">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
                                             <label for="subtitle" class="col-sm-2 col-form-label">Cantidad</label>
                                             <div class="col-sm-7">
                                                 <div class="form-group bmd-form-group is-filled">
                                                     <input class="form-control" name="cantidad" id="cantidad"
-                                                        type="number" value="{{ $product->cantidad }}"
-                                                        placeholder="Cantidad" required aria-required="true">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <label for="subtitle" class="col-sm-2 col-form-label">Cantidad</label>
-                                            <div class="col-sm-7">
-                                                <div class="form-group bmd-form-group is-filled">
-                                                    <input class="form-control" name="cantidad" id="cantidad"
-                                                        type="number" value="{{ $product->stock }}"
-                                                        placeholder="Cantidad" required aria-required="true">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <label for="subtitle" class="col-sm-2 col-form-label">Precio</label>
-                                            <div class="col-sm-7">
-                                                <div class="form-group bmd-form-group is-filled">
-                                                    <input class="form-control" name="precio" id="precio" type="number"
-                                                        value="{{ $product->precio }}" placeholder="Precio" required
+                                                        type="number" placeholder="Cantidad" required
                                                         aria-required="true">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <label for="category_id" class="col-sm-2 col-form-label">Categoría</label>
+                                            <label for="subtitle" class="col-sm-2 col-form-label">Subtotal</label>
                                             <div class="col-sm-7">
-                                                <select class="form-group bmd-form-group" name="category_id"
-                                                    id="category_id">
+                                                <div class="form-group bmd-form-group is-filled">
+                                                    <input class="form-control" name="subtotal" id="subtotal"
+                                                        type="number" placeholder="Subtotal" required
+                                                        aria-required="true">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label for="product_id" class="col-sm-2 col-form-label">Producto</label>
+                                            <div class="col-sm-7">
+                                                <select class="form-group bmd-form-group" name="product_id"
+                                                    id="product_id">
                                                     <option selected value="">Selecciona</option>
-                                                    @foreach($categorias as $categoria)
-                                                        <option value="{!! $categoria->id !!}">{{ $categoria->name }}
+                                                    @foreach($productos as $producto)
+                                                        <option value="{!! $producto->id !!}">{{ $producto->name }}
                                                         </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label for="sale_id" class="col-sm-2 col-form-label">Venta</label>
+                                            <div class="col-sm-7">
+                                                <select class="form-group bmd-form-group" name="sale_id" id="sale_id">
+                                                    <option selected value="">Selecciona</option>
+                                                    @foreach($sales as $sale)
+                                                        <option value="{!! $sale->id !!}">{{ $sale->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
