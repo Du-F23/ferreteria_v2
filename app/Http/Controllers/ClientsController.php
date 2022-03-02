@@ -41,6 +41,10 @@ class ClientsController extends Controller
 
         Clients::create([
             'name'=>$request->name,
+            'app'=>$request->app,
+            'apm'=>$request->apm,
+            'email'=>$request->email,
+            'rfc'=>$request->rfc,
             'home_address'=>$request->home_address,
             'phone_number'=>$request->phone_number,
         ]);

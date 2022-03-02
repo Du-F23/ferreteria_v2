@@ -1,14 +1,14 @@
 @extends('layout.app')
-@extends('layout.head')
+
 @section('content')
 <div class="container justify-content-center">
     <div class="row  justify-content-center">
         <div class="col-8">
-            <form method="POST" action="{{ route('product.store') }}" class="form-horizontal">
+            <form method="POST" action="{{ route('details.store') }}" class="form-horizontal">
                 @csrf
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        <h4 class="card-title">Crear artículo</h4>
+                        <h4 class="card-title">Crear Deralle de Venta</h4>
                         <!-- <p class="card-category">User information</p> -->
                     </div>
                     <div class="card-body ">

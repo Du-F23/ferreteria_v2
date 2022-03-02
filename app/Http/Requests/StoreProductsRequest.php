@@ -28,6 +28,7 @@ class StoreProductsRequest extends FormRequest
         return [
         'name'=> ['required', 'min:3', 'max:255'],
         'cantidad'=> ['required','integer', 'min:1'],
+        'stock'=> ['required','integer', 'min:1'],
         'precio'=> ['required', 'numeric', 'min:1'],
         'category_id'=> ['required'],
         ];

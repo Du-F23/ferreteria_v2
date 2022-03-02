@@ -2,11 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Category;
-use App\Models\Product;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateProductsRequest extends FormRequest
+class UpdateDetailSalesRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,10 +24,10 @@ class UpdateProductsRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=> ['required', 'min:3', 'max:255'],
-            'cantidad'=> ['required', 'max:255'],
-            'stock'=> ['required','integer', 'min:1'],
-            'precio'=> ['required', 'max:255'],
+            'product_id'=> ['required'],
+            'sales_id'=> ['required'],
+            'cantidad'=> ['required','integer', 'min:1'],
+            'precio'=> ['required', 'numeric', 'min:1'],
         ];
     }
 }

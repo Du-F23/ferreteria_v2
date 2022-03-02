@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('name');
             $table->bigInteger('precio');
             $table->bigInteger('cantidad');
+            $table->bigInteger('stock');
+
+            //Llave foranea
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();

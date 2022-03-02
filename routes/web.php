@@ -57,3 +57,11 @@ Route::put('/sales/{id}/update', [SalesController::class, 'update'])->name('sale
 Route::get('/sales/{id}/edit', [SalesController::class, 'edit'])->name('sales.edit');
 Route::delete('/sales/{venta}', [SalesController::class, 'edit'])->name('sales.edit');
 
+//DetailSales Rutas
+Route::get('/details', [DetailSalesController::class, 'index'])->name('details.index');
+Route::get('/details/add', [DetailSalesController::class, 'create'])->name('details.create');
+Route::post('/details', [DetailSalesController::class, 'store'])->name('details.store');
+Route::put('/details/{id}/update', [DetailSalesController::class, 'update'])->name('details.update');
+Route::get('/details/{id}/edit', [DetailSalesController::class, 'edit'])->name('details.edit');
+Route::delete('/details/{detailSales}', [DetailSalesController::class, 'destroy'])->name('details.destroy');
+

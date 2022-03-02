@@ -46,6 +46,7 @@ class ProductsController extends Controller
             'name'=>$request->name,
             'cantidad'=>$request->cantidad,
             'precio'=>$request->precio,
+            'stock'=>$request->stock,
             'category_id'=>$request->category_id,
         ]);
         return redirect('/product')->with('mesage', 'El producto se ha agregado exitosamente!');

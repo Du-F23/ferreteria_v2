@@ -21,6 +21,38 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <label for="title" class="col-sm-2 col-form-label">Apellido Paterno</label>
+                                <div class="col-sm-7">
+                                    <div class="form-group bmd-form-group is-filled">
+                                        <input class="form-control" name="app"  id="title" type="text" placeholder="Apellido Paterno" required aria-required="true">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label for="title" class="col-sm-2 col-form-label">Apellido Materno</label>
+                                <div class="col-sm-7">
+                                    <div class="form-group bmd-form-group is-filled">
+                                        <input class="form-control" name="apm"  id="title" type="text" placeholder="Apellido Materno" required aria-required="true">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label for="title" class="col-sm-2 col-form-label">RFC</label>
+                                <div class="col-sm-7">
+                                    <div class="form-group bmd-form-group is-filled">
+                                        <input class="form-control" name="rfc"  id="title" type="text" placeholder="Registro Federal del Contribuyente" required aria-required="true">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label for="title" class="col-sm-2 col-form-label">Email</label>
+                                <div class="col-sm-7">
+                                    <div class="form-group bmd-form-group is-filled">
+                                        <input class="form-control" name="email"  id="title" type="email" placeholder="example@example.com" required aria-required="true">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <label for="subtitle" class="col-sm-2 col-form-label">Domicilio</label>
                                 <div class="col-sm-7">
                                     <div class="form-group bmd-form-group is-filled">
