@@ -16,6 +16,9 @@ class ProductsController extends Controller
      */
     public function index()
     {
+        $produc = Products::all();
+        return response()->json($produc);
+
         $products = Products::latest()->paginate(20);
         return view('product.index', [
             'products' => $products,
@@ -50,6 +53,10 @@ class ProductsController extends Controller
             'category_id'=>$request->category_id,
         ]);
         return redirect('/product')->with('mesage', 'El producto se ha agregado exitosamente!');
+    }
+
+    public function show(Products $produc){
+        return response()->json(Products::all($produc));
     }
 
     public function edit($id)

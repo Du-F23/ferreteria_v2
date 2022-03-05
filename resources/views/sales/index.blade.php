@@ -64,7 +64,6 @@
                                     <td>{{$ventas->client_id}}</td>
                                     <td>{{$ventas->product_id}}</td>
                                     <td>{{$ventas->category_id}}</td>
-                                    <td>{{$ventas->quantity}}</td>
                                     <td>
                                         <button type='button' class="btn btn-primary"><i class="far fa-eye"></i></button>
                                         <a type='button' href="/sales/{{$ventas->id}}/edit"><button type='button' class="btn btn-success"><i class="fas fa-pen-square"></i></button></a>

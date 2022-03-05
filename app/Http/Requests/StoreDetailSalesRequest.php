@@ -24,10 +24,10 @@ class StoreDetailSalesRequest extends FormRequest
     public function rules()
     {
         return [
+            'cantidad'=> ['required'],
+            'subtotal'=> ['required'],
             'product_id'=> ['required'],
             'sales_id'=> ['required'],
-            'cantidad'=> ['required','integer', 'min:1'],
-            'precio'=> ['required', 'numeric', 'min:1'],
         ];
     }
 }

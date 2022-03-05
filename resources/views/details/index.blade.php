@@ -53,9 +53,9 @@
             <thead>
                 <tr>
                 <th>Clave</th>
-                <th>nombre</th>
-                <th>Precio</th>
-                <th>Cantidad</th>
+                <th>Producto</th>
+                <th>venta</th>
+
                 <th>Opciones</th>
                 </tr>
             </thead>
@@ -63,22 +63,19 @@
                 @foreach($detail as $detai)
                 <tr>
                     <td>{{$detai->id}}</td>
-                    <td>{{$detai->name}}</td>
-                    <td>{{$detai->precio}}</td>
-                    <td>{{$detail->cantidad}}</td>
+                    <td>{{$detai->product_id}}</td>
+                    <td>{{$detai->sale_id}}</td>
                     <td>
                         <button type='button' class="btn btn-primary"><i class="far fa-eye"></i></button>
-                        <a type='button' href="/details/{{$detail->id}}/edit"><button type='button' class="btn btn-success"><i class="fas fa-pen-square"></i></button></a>
+                    
 
 
-                        <form action="{{ route('details.destroy', $detailSales) }}" method="POST">
-                            @method('DELETE')
-                            @csrf
+                        
                             <button type='submit' class="btn btn-sm btn-danger"
                                     onClick="return confirm('estas seguro  a eliminar el registro?')">
                                 <i class="far fa-trash-alt"></i>
                             </button>
-                        </form>
+                        
                   </td>
                 </tr>
                 @endforeach

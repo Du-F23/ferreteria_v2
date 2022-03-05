@@ -27,7 +27,7 @@ class UpdateDetailSalesRequest extends FormRequest
             'product_id'=> ['required'],
             'sales_id'=> ['required'],
             'cantidad'=> ['required','integer', 'min:1'],
-            'precio'=> ['required', 'numeric', 'min:1'],
+            'subtotal'=> ['required', 'numeric', 'min:1'],
         ];
     }
 }

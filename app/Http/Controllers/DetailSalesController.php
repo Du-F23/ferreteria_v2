@@ -18,9 +18,7 @@ class DetailSalesController extends Controller
     public function index()
     {
         $detail=DetailSales::latest()->paginate(20);
-        return view('details.index', [
-            'detail'=>$detail
-        ]);
+    return view('details.index', compact('detail'));
     }
 
     /**
@@ -30,12 +28,12 @@ class DetailSalesController extends Controller
      */
     public function create()
     {
-        $detailSales=new DetailSales;
+        $details=new DetailSales;
         $productos=Products::select('id', 'name')->orderBy('name')->get();
         $sales=Sales::select('id')->orderBy('id')->get();
 
         return view('details.add', [
-            'detailSales'=>$detailSales,
+            'details'=>$details,
             'productos'=>$productos,
             'sales'=>$sales
         ]);
@@ -55,6 +53,8 @@ class DetailSalesController extends Controller
             'product_id'=>$request->product_id,
             'sale_id'=>$request->sale_id
         ]);
+
+
 
         return redirect('/details')->with('mesage', 'El detalle de venta se ha agregado exitosamente!');
     }
@@ -79,7 +79,7 @@ class DetailSalesController extends Controller
     public function edit($id)
     {
         $productos=Products::select('id', 'name')->orderBy('name')->get();
-        $sales=Sales::select('id', 'name')->orderBy('name')->get();
+        $sales=Sales::select('id')->orderBy('id')->get();
         $details=DetailSales::find($id);
 
         return view('details.edit', data:[

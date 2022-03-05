@@ -4,7 +4,7 @@
 <div class="container justify-content-center">
     <div class="row  justify-content-center">
         <div class="col-8">
-            <form method="POST" action="{{ route('details.store') }}" class="form-horizontal">
+            <form method="POST" action="{{ route('details.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="card">
                     <div class="card-header card-header-primary">
@@ -47,7 +47,7 @@
                                 <select class="form-group bmd-form-group" name="sale_id" id="sale_id">
                                     <option selected value="">Selecciona</option>
                                     @foreach($sales as $sale)
-                                        <option value="{!! $sale->id !!}">{{ $sale->name }}</option>
+                                        <option value="{!! $sale->id !!}">{{ $sale->id }}</option>
                                     @endforeach
                                 </select>
                             </div>

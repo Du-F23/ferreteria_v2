@@ -54,8 +54,8 @@ class SalesController extends Controller
             'client_id'=>$request->client_id
             ,'product_id'=>$request->product_id
             ,'user_id'=>$request->user_id
-            ,'quantity'=>$request->quantity,
-            'category_id'=>$request->category_id
+            //,'cantidad'=>$request->cantidad,
+            ,'category_id'=>$request->category_id
 
         ]);
         return redirect('/sales')->with('mesage', 'La venta se ha agregado exitosamente!');
@@ -78,13 +78,14 @@ class SalesController extends Controller
      * @param  \App\Models\Sales  $sales
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sales $sales)
+    public function edit(Sales $sales,$id)
     {
         $venta=Sales::findOrFail($id);
+        $products=Products::select('id', 'name')->orderBy('name')->get();
         $categorias = Category::select('id', 'name')->orderBy('name')->get();
         $clientes = Clients::select('id', 'name')->orderBy('name')->get();
         $usuarios = User::select('id', 'name')->orderBy('name')->get();
-        return view('sales.edit', compact('categorias', 'clientes', 'usuarios', 'venta'));
+        return view('sales.edit', compact('categorias', 'products', 'clientes', 'usuarios', 'venta'));
     }
 
     /**
